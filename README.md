@@ -1,5 +1,5 @@
 # GraphRanker
-**GraphRanker** is a C project realized for the *Algorithms and Principles of Computer Science* (*Algoritmi e Principi dell'Informatica*) course at Politecnico di Milano. The focus is on the algorithm's runtime and space optimization.
+**GraphRanker** is a C project realized for the *Algorithms and Principles of Computer Science* (*Algoritmi e Principi dell'Informatica*) course at Politecnico di Milano in 2021. The focus is on the algorithm's runtime and space optimization.
 ## Problem Description
 The goal is to generate a rank of weighted directed graphs. More precisely, the rank has to keep track of the *k* "best" graphs.
 ## Input
