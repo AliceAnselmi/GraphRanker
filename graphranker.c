@@ -16,7 +16,7 @@ typedef struct tree
     unsigned long int key;
     struct tree *father;
     struct tree *left;
-    struct tree *right;Inseriscinode
+    struct tree *right;
 }tree_t;
 
 node_t*Append(node_t*, int, unsigned long int, int);
