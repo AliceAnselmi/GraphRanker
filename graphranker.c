@@ -170,7 +170,7 @@ unsigned long int Dijkstra (node_t *graph[], int d)
 {
     node_t*p;
     unsigned long int newd, dist[d];
-    int i,curr, q[d-1], dimcoda, sum;
+    int i,curr, q[d-1], dimqueue, sum;
 
     //queue initialization
     dist[0]=0;
@@ -181,8 +181,8 @@ unsigned long int Dijkstra (node_t *graph[], int d)
     }
 
     curr=0;
-    dimcoda=d-1;
-    while(dimcoda!=0)
+    dimqueue=d-1;
+    while(dimqueue!=0)
     {
         newd=ULONG_MAX;
         p=graph[curr];
@@ -199,10 +199,10 @@ unsigned long int Dijkstra (node_t *graph[], int d)
         }
         if(curr==0&&newd==ULONG_MAX)//node 0 is not reachable
             break;
-        curr=Dequeue(q,dist, dimcoda);
+        curr=Dequeue(q,dist, dimqueue);
         if(curr==-1)    //reached the point where the remaining nodes are not reachable
             break;
-        dimcoda--;
+        dimqueue--;
     }
 
     sum=0;
@@ -213,7 +213,7 @@ unsigned long int Dijkstra (node_t *graph[], int d)
 
 }
 
-int Dequeue(int q[], long unsigned int dist[], int dimcoda)
+int Dequeue(int q[], long unsigned int dist[], int dimqueue)
 {
     //returns the head of the queue
     int i, index, imin;
@@ -222,7 +222,7 @@ int Dequeue(int q[], long unsigned int dist[], int dimcoda)
     min=ULONG_MAX;
     imin=-1;
     index=0;
-    for(i=0;i<dimcoda;i++)
+    for(i=0;i<dimqueue;i++)
     {
         if(dist[q[i]]<min)
         {
@@ -232,12 +232,12 @@ int Dequeue(int q[], long unsigned int dist[], int dimcoda)
         }
     }
     if(imin!=-1)
-        for(i=imin+1;i<dimcoda;i++)
+        for(i=imin+1;i<dimqueue;i++)
             q[i-1]=q[i];
         // Not reachable nodes: I will reach a point where in the queue I have only nodes whose distance is set to infinity
-    if(dimcoda>=0&&min==ULONG_MAX)
+    if(dimqueue>=0&&min==ULONG_MAX)
     {
-        for(i=0;i<dimcoda;i++)
+        for(i=0;i<dimqueue;i++)
             dist[q[i]]=0;
         index=-1;
     }
