@@ -19,16 +19,16 @@ typedef struct tree
     struct tree *right;
 }tree_t;
 
-node_t*Append(node_t*, int, unsigned long int, int);
-
 unsigned long int StringConversion(char*, int);
 
-unsigned long int Dijkstra(node_t *[], int);
+node_t*Append(node_t*, int, unsigned long int, int); //support method for graph representation (queue)
 int Dequeue(int[], long unsigned int[], int);
+unsigned long int Dijkstra(node_t *[], int);
 
-tree_t*QueueSum(tree_t*, unsigned long int, int, int);
-void PrintRanking(tree_t*, int, int);
 tree_t*InsertNode(tree_t*,tree_t*);
+tree_t*AddSumToTree(tree_t*, unsigned long int, int, int);
+
+void PrintRanking(tree_t*, int, int);
 
 int main()
 {
@@ -103,7 +103,7 @@ int main()
 
             }
             sum=Dijkstra(graph, d);
-            top=QueueSum(top, sum, graphcounter, k);
+            top=AddSumToTree(top, sum, graphcounter, k);
             graphcounter++;
         }
     }
@@ -247,7 +247,7 @@ int Dequeue(int q[], long unsigned int dist[], int dimqueue)
 tree_t*small,*big;
 int dimtree=0;
 
-tree_t*QueueSum(tree_t *h, unsigned long int val, int index, int k)
+tree_t*AddSumToTree(tree_t *h, unsigned long int val, int index, int k)
 {
     tree_t *del, *cur;
     tree_t *x;
